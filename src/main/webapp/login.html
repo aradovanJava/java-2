@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="hr" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <link rel="stylesheet" th:href="@{/css/stil.css}" href="../../css/stil.css">
+</head>
+<body>
+<!-- src/main/webapp/login.html -->
+<form method="POST" action="j_security_check">
+    <input type="text"     name="j_username" placeholder="Korisničko ime"/>
+    <input type="password" name="j_password" placeholder="Lozinka"/>
+    <button type="submit">Prijava</button>
+</form>
+
+</body>
+</html>

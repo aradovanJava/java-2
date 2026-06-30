@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 /**
  * Jednostavan servis s korisnicima u memoriji.
@@ -44,5 +45,15 @@ public class KorisnikServis {
 
     public int broj() {
         return korisnici.size();
+    }
+
+    public Boolean obrisi(Long id) {
+        Optional<Korisnik> korisnikZaBrisanje = pronadji(id);
+        if(korisnikZaBrisanje.isPresent()) {
+            korisnici.remove(korisnikZaBrisanje.get());
+            return Boolean.TRUE;
+        }
+
+        return false;
     }
 }

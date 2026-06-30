@@ -13,6 +13,7 @@
         <a th:href="@{/korisnici}" href="#">Korisnici</a>
         <a th:href="@{/predstavi-se}" href="#">Predstavi se</a>
         <a th:href="@{/admin/pregled}" href="#">Administracija</a>
+        <a th:href="@{/odjava}" href="#">Logout</a>
     </nav>
 </header>
 
@@ -30,7 +31,13 @@
 
         <table>
             <thead>
-            <tr><th>#</th><th>Ime</th><th>E-mail</th><th>Grad</th></tr>
+            <tr>
+                <th>#</th>
+                <th>Ime</th>
+                <th>E-mail</th>
+                <th>Grad</th>
+                <th>Obriši</th>
+            </tr>
             </thead>
             <tbody>
             <!-- th:each: petlja po kolekciji iz request scopea -->
@@ -39,6 +46,12 @@
                 <td th:text="${k.ime}">Ana Anić</td>
                 <td th:text="${k.email}">ana@example.com</td>
                 <td th:text="${k.grad}">Zagreb</td>
+                <td>
+                    <form th:action="@{korisnici}" method="post" th:object="${k}">
+                        <input type="hidden" th:name="id" th:value="${k.id}"/>
+                        <button type="submit" value="Delete" class="obrisi-gumb">Delete</button>
+                    </form>
+                </td>
             </tr>
             <tr th:if="${#lists.isEmpty(korisnici)}">
                 <td colspan="4">Nema korisnika.</td>

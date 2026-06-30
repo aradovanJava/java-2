@@ -5,6 +5,7 @@
     --muted: #7A6A5C;
     --card: #F6F1EA;
     --bg: #FCFAF7;
+    --red: #FF0000
 }
 
 * { box-sizing: border-box; }
@@ -65,6 +66,11 @@ input[type=text], input[type=email] {
 }
 .gumb.sekundarni { background: var(--steel); }
 .gumb:hover { filter: brightness(1.07); }
+
+.obrisi-gumb {
+    display: inline-block; background: var(--red); color: #fff; border: none;
+    padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; text-decoration: none;
+}
 
 .greska { color: #b3402b; font-weight: 600; }
 .naglasak { color: var(--amber); font-weight: 700; }

@@ -10,6 +10,7 @@
     <!-- Početna stranica (preusmjerava na /pocetna servlet) -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
+        <welcome-file>pocetna.html</welcome-file>
     </welcome-file-list>
 
     <!-- Trajanje sesije u minutama (SESSION scope) -->
@@ -29,10 +30,25 @@
         </auth-constraint>
     </security-constraint>
 
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Korisnici</web-resource-name>
+            <url-pattern>/korisnici</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
     <!-- Način prijave: BASIC (preglednik prikazuje skočni dijalog) -->
+
     <login-config>
-        <auth-method>BASIC</auth-method>
+        <auth-method>FORM</auth-method>
         <realm-name>Servleti primjer</realm-name>
+        <form-login-config>
+            <form-login-page>/login.html</form-login-page>
+            <form-error-page>/login-greska.html</form-error-page>
+        </form-login-config>
     </login-config>
 
     <!-- Deklaracija poznatih rola -->
@@ -45,6 +61,10 @@
 
     <!-- ================== STRANICE ZA GREŠKE ================== -->
     <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/views/greska.html</location>
+    </error-page>
+    <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/views/greska.html</location>
     </error-page>
@@ -52,7 +72,6 @@
         <error-code>500</error-code>
         <location>/WEB-INF/views/greska.html</location>
     </error-page>
-
     <!--
         NAPOMENA: servleti se mapiraju anotacijom @WebServlet, pa ovdje nema
         <servlet>/<servlet-mapping> elemenata. Primjer klasičnog mapiranja
