@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Greška</title>
+    <link rel="stylesheet" th:href="@{/css/stil.css}" href="../../css/stil.css">
+</head>
+<body>
+<header class="traka">
+    <span class="logo">Servleti primjer</span>
+    <nav>
+        <a th:href="@{/pocetna}" href="#">Početna</a>
+    </nav>
+</header>
+
+<main>
+    <p class="kicker">Greška</p>
+    <h1>Nešto je pošlo po zlu</h1>
+    <div class="kartica">
+        <p>Tražena stranica ne postoji ili je došlo do pogreške na poslužitelju.</p>
+        <p><a th:href="@{/pocetna}" href="#" class="gumb">Natrag na početnu</a></p>
+    </div>
+</main>
+</body>
+</html>

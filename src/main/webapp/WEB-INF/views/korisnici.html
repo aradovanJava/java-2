@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Korisnici</title>
+    <link rel="stylesheet" th:href="@{/css/stil.css}" href="../../css/stil.css">
+</head>
+<body>
+<header class="traka">
+    <span class="logo">Servleti primjer</span>
+    <nav>
+        <a th:href="@{/pocetna}" href="#">Početna</a>
+        <a th:href="@{/korisnici}" href="#">Korisnici</a>
+        <a th:href="@{/predstavi-se}" href="#">Predstavi se</a>
+        <a th:href="@{/admin/pregled}" href="#">Administracija</a>
+    </nav>
+</header>
+
+<main>
+    <p class="kicker">Request scope</p>
+    <h1>Popis korisnika</h1>
+
+    <div class="kartica">
+        <p>
+            <span class="scope-tag">request</span>
+            Lista je postavljena kao atribut zahtjeva u
+            <span class="naglasak">KorisniciServlet</span> i pročitana ovdje izrazom
+            <code>${korisnici}</code>.
+        </p>
+
+        <table>
+            <thead>
+            <tr><th>#</th><th>Ime</th><th>E-mail</th><th>Grad</th></tr>
+            </thead>
+            <tbody>
+            <!-- th:each: petlja po kolekciji iz request scopea -->
+            <tr th:each="k : ${korisnici}">
+                <td th:text="${k.id}">1</td>
+                <td th:text="${k.ime}">Ana Anić</td>
+                <td th:text="${k.email}">ana@example.com</td>
+                <td th:text="${k.grad}">Zagreb</td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(korisnici)}">
+                <td colspan="4">Nema korisnika.</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:1rem">
+            <a th:href="@{/korisnici/dodaj}" href="#" class="gumb">+ Dodaj korisnika</a>
+        </p>
+    </div>
+</main>
+</body>
+</html>

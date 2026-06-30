@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Servleti web primjer</display-name>
+
+    <!-- Početna stranica (preusmjerava na /pocetna servlet) -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- Trajanje sesije u minutama (SESSION scope) -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- ================== SIGURNOST ================== -->
+    <!-- Zaštita putanje /admin/* : smiju samo korisnici s rolom "admin" -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Administracija</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Način prijave: BASIC (preglednik prikazuje skočni dijalog) -->
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Servleti primjer</realm-name>
+    </login-config>
+
+    <!-- Deklaracija poznatih rola -->
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <role-name>korisnik</role-name>
+    </security-role>
+
+    <!-- ================== STRANICE ZA GREŠKE ================== -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/greska.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/greska.html</location>
+    </error-page>
+
+    <!--
+        NAPOMENA: servleti se mapiraju anotacijom @WebServlet, pa ovdje nema
+        <servlet>/<servlet-mapping> elemenata. Primjer klasičnog mapiranja
+        ostavljen je u komentaru radi usporedbe sa slajdovima:
+
+        <servlet>
+            <servlet-name>pocetna</servlet-name>
+            <servlet-class>servlet.hr.java.web.PocetnaServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>pocetna</servlet-name>
+            <url-pattern>/pocetna</url-pattern>
+        </servlet-mapping>
+    -->
+
+</web-app>

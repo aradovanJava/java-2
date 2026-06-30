@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Administracija</title>
+    <link rel="stylesheet" th:href="@{/css/stil.css}" href="../../css/stil.css">
+</head>
+<body>
+<header class="traka">
+    <span class="logo">Servleti primjer</span>
+    <nav>
+        <a th:href="@{/pocetna}" href="#">Početna</a>
+        <a th:href="@{/korisnici}" href="#">Korisnici</a>
+        <a th:href="@{/predstavi-se}" href="#">Predstavi se</a>
+        <a th:href="@{/admin/pregled}" href="#">Administracija</a>
+    </nav>
+    <span class="desno">
+        prijavljen: <span class="naglasak" th:text="${korisnik}">?</span>
+    </span>
+</header>
+
+<main>
+    <p class="kicker">Sigurnost · zaštićena zona</p>
+    <h1>Administracija</h1>
+
+    <div class="kartica">
+        <p>
+            Ova putanja (<code>/admin/*</code>) zaštićena je u <code>web.xml</code>
+            (<span class="naglasak">security-constraint</span> + BASIC prijava). Pristup imaju
+            samo korisnici s rolom <span class="naglasak">admin</span> iz
+            <code>tomcat-users.xml</code>.
+        </p>
+        <ul>
+            <li>Prijavljeni korisnik: <strong th:text="${korisnik}">ana</strong></li>
+            <li>Ima rolu <code>admin</code>:
+                <strong th:text="${jeAdmin} ? 'da' : 'ne'">da</strong></li>
+            <li>Broj korisnika u registru: <strong th:text="${brojKorisnika}">0</strong></li>
+        </ul>
+        <p class="napomena">
+            Podatke o prijavljenom korisniku daje kontejner:
+            <code>request.getRemoteUser()</code> i <code>request.isUserInRole("admin")</code>.
+        </p>
+    </div>
+</main>
+</body>
+</html>

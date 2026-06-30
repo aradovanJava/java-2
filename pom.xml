@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>hr.java.web</groupId>
+    <artifactId>servleti-web-primjer</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+
+    <name>Servleti web primjer</name>
+    <description>
+        Praktični primjer Java web aplikacije sa servletima, Thymeleaf pogledima,
+        scopeovima, web.xml descriptorom i sigurnošću (Tomcat). Temelj za vježbe.
+    </description>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
+        <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
+        <slf4j.version>2.0.13</slf4j.version>
+    </properties>
+
+    <dependencies>
+        <!-- Jakarta Servlet API: pruža ga Tomcat 10.1+ (scope = provided) -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Thymeleaf: predlošci (pogled / view) -->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>${thymeleaf.version}</version>
+        </dependency>
+
+        <!-- Jednostavan SLF4J logger (Thymeleaf koristi SLF4J) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Ime izgrađenog WAR-a: target/servleti-web-primjer.war -->
+        <finalName>servleti-web-primjer</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

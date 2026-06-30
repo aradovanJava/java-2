@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PRIMJER za <TOMCAT>/conf/tomcat-users.xml
+
+  Kopiraj <role> i <user> elemente UNUTAR postojećeg <tomcat-users> ... </tomcat-users>
+  u Tomcatovoj datoteci conf/tomcat-users.xml, pa ponovno pokreni Tomcat.
+
+  Role "admin" i "korisnik" moraju odgovarati <role-name> iz web.xml.
+
+  Prijava za /admin/* (BASIC): npr. korisnik "ana" / lozinka "tajna".
+
+  UPOZORENJE: lozinke su u čistom tekstu — prikladno za učenje i razvoj,
+  NE za produkciju (tamo koristi hashirane lozinke i jači Realm).
+-->
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+
+    <role rolename="admin"/>
+    <role rolename="korisnik"/>
+
+    <!-- ana: i admin i korisnik -->
+    <user username="ana" password="tajna" roles="admin,korisnik"/>
+
+    <!-- ivo: samo korisnik (nema pristup /admin/*) -->
+    <user username="ivo" password="123" roles="korisnik"/>
+
+</tomcat-users>

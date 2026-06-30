@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Predstavi se</title>
+    <link rel="stylesheet" th:href="@{/css/stil.css}" href="../../css/stil.css">
+</head>
+<body>
+<header class="traka">
+    <span class="logo">Servleti primjer</span>
+    <nav>
+        <a th:href="@{/pocetna}" href="#">Početna</a>
+        <a th:href="@{/korisnici}" href="#">Korisnici</a>
+        <a th:href="@{/predstavi-se}" href="#">Predstavi se</a>
+        <a th:href="@{/admin/pregled}" href="#">Administracija</a>
+    </nav>
+</header>
+
+<main>
+    <p class="kicker">Session scope</p>
+    <h1>Predstavi se</h1>
+
+    <div class="kartica">
+        <p>
+            Tvoje ime spremit će se u <span class="naglasak">sesiju</span> (HttpSession) i
+            bit će zapamćeno kroz više zahtjeva dok sesija traje.
+        </p>
+
+        <p class="greska" th:if="${greska}" th:text="${greska}">poruka o grešci</p>
+
+        <!-- obrazac šalje POST na isti URL (/predstavi-se) -->
+        <form th:action="@{/predstavi-se}" method="post" action="#">
+            <div>
+                <label for="ime">Ime</label>
+                <input type="text" id="ime" name="ime" placeholder="npr. Ana">
+            </div>
+            <button type="submit" class="gumb">Spremi u sesiju</button>
+        </form>
+    </div>
+
+    <p class="napomena">Nakon spremanja slijedi redirect na početnu (Post-Redirect-Get).</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,76 @@
+:root {
+    --amber: #E8821E;
+    --steel: #3F7CA0;
+    --ink: #2B2521;
+    --muted: #7A6A5C;
+    --card: #F6F1EA;
+    --bg: #FCFAF7;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Segoe UI", Calibri, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    line-height: 1.5;
+}
+
+header.traka {
+    background: var(--ink);
+    color: #fff;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+header.traka .logo { font-weight: 700; color: var(--amber); font-size: 1.15rem; }
+header.traka nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+header.traka nav a { color: #fff; text-decoration: none; font-size: 0.95rem; }
+header.traka nav a:hover { color: var(--amber); }
+header.traka .desno { margin-left: auto; font-size: 0.9rem; color: #cbb9a8; }
+
+main {
+    max-width: 880px;
+    margin: 1.6rem auto;
+    padding: 0 1.5rem;
+}
+
+h1 { color: var(--ink); margin-top: 0; }
+.kicker { color: var(--amber); font-weight: 700; letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase; }
+
+.kartica {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    margin: 1rem 0;
+}
+
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+th, td { padding: 0.65rem 0.9rem; text-align: left; border-bottom: 1px solid #ece3d8; }
+th { background: var(--ink); color: var(--amber); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+tr:nth-child(even) td { background: #faf6f0; }
+
+form { display: grid; gap: 0.8rem; max-width: 420px; }
+label { font-weight: 600; font-size: 0.9rem; }
+input[type=text], input[type=email] {
+    width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #d8ccbe; border-radius: 6px; font-size: 1rem;
+}
+.gumb {
+    display: inline-block; background: var(--amber); color: #fff; border: none;
+    padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; text-decoration: none;
+}
+.gumb.sekundarni { background: var(--steel); }
+.gumb:hover { filter: brightness(1.07); }
+
+.greska { color: #b3402b; font-weight: 600; }
+.naglasak { color: var(--amber); font-weight: 700; }
+.posjeti { color: var(--steel); font-weight: 700; }
+.napomena { color: var(--muted); font-size: 0.9rem; }
+.scope-tag {
+    display: inline-block; background: var(--steel); color: #fff; font-size: 0.72rem;
+    padding: 0.12rem 0.5rem; border-radius: 10px; letter-spacing: 0.5px;
+}

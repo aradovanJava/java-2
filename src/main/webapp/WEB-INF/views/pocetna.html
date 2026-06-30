@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="hr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Početna — Servleti web primjer</title>
+    <link rel="stylesheet" th:href="@{/css/stil.css}" href="../../css/stil.css">
+</head>
+<body>
+<header class="traka">
+    <span class="logo">Servleti primjer</span>
+    <nav>
+        <a th:href="@{/pocetna}" href="#">Početna</a>
+        <a th:href="@{/korisnici}" href="#">Korisnici</a>
+        <a th:href="@{/predstavi-se}" href="#">Predstavi se</a>
+        <a th:href="@{/admin/pregled}" href="#">Administracija</a>
+    </nav>
+    <span class="desno">
+        <span th:if="${posjetitelj}">
+            Pozdrav, <span class="naglasak" th:text="${posjetitelj}">gost</span> ·
+            <a th:href="@{/odjava}" href="#" style="color:#cbb9a8">odjava</a>
+        </span>
+        <span th:unless="${posjetitelj}">nepoznati posjetitelj</span>
+    </span>
+</header>
+
+<main>
+    <p class="kicker">Početna</p>
+    <h1>Java web aplikacija sa servletima</h1>
+
+    <div class="kartica">
+        <p>
+            Ovu stranicu poslužuje <span class="naglasak">PocetnaServlet</span>
+            (mapiran na <code>/pocetna</code>), a prikaz gradi Thymeleaf predložak
+            <code>pocetna.html</code>.
+        </p>
+        <p>
+            <span class="scope-tag">application</span>
+            Broj posjeta od pokretanja aplikacije:
+            <span class="posjeti" th:text="${posjeti}">0</span>
+            <span class="napomena">(zajednički brojač u ServletContextu — dijele ga svi korisnici)</span>
+        </p>
+        <p>
+            <span class="scope-tag">session</span>
+            <span th:if="${posjetitelj}">
+                Predstavio si se kao <span class="naglasak" th:text="${posjetitelj}">ime</span>.
+            </span>
+            <span th:unless="${posjetitelj}">
+                Još se nisi predstavio — <a th:href="@{/predstavi-se}" href="#">predstavi se</a>.
+            </span>
+        </p>
+        <p>
+            U registru je trenutno
+            <span class="naglasak" th:text="${brojKorisnika}">0</span> korisnika.
+            <a th:href="@{/korisnici}" href="#">Pogledaj popis →</a>
+        </p>
+    </div>
+
+    <p class="napomena">
+        Vježba: dodaj page/request scope primjere, novu stranicu ili poveži servis s bazom podataka.
+    </p>
+</main>
+</body>
+</html>
