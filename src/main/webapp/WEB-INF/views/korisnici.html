@@ -36,7 +36,9 @@
                 <th>Ime</th>
                 <th>E-mail</th>
                 <th>Grad</th>
-                <th>Obriši</th>
+                <th th:if="${userRole == 'admin'}">
+                    Obriši
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -46,7 +48,7 @@
                 <td th:text="${k.ime}">Ana Anić</td>
                 <td th:text="${k.email}">ana@example.com</td>
                 <td th:text="${k.grad}">Zagreb</td>
-                <td>
+                <td th:if="${userRole == 'admin'}">
                     <form th:action="@{korisnici}" method="post" th:object="${k}">
                         <input type="hidden" th:name="id" th:value="${k.id}"/>
                         <button type="submit" value="Delete" class="obrisi-gumb">Delete</button>

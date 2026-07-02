@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Form</title>
-    <link rel="stylesheet" th:href="@{/css/stil.css}" href="../../css/stil.css">
+    <link rel="stylesheet" th:href="@{/css/stil.css}" href="css/stil.css">
 </head>
 <body>
 <!-- src/main/webapp/login.html -->
-<form method="POST" action="j_security_check">
-    <input type="text"     name="j_username" placeholder="Korisničko ime"/>
-    <input type="password" name="j_password" placeholder="Lozinka"/>
-    <button type="submit">Prijava</button>
-</form>
+<div>
+    <form method="POST" action="j_security_check">
+        <input type="text"     name="j_username" placeholder="Korisničko ime"/>
+        <input type="password" name="j_password" placeholder="Lozinka"/>
+        <button type="submit">Prijava</button>
+    </form>
+</div>
 
 </body>
 </html>
